@@ -1,0 +1,176 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --nav-bg: #f8f9fa;
+  --nav-text: #212529;
+  --table-bg: #ffffff;
+  --table-border: #dee2e6;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+  --button-hover: #0056b3;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --hover-bg: #f1f1f1;
+  --accent-color: #007bff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f8f9fa;
+  --nav-bg: #1a1a1a;
+  --nav-text: #f8f9fa;
+  --table-bg: #1e1e1e;
+  --table-border: #444;
+  --button-bg: #6c757d;
+  --button-text: #ffffff;
+  --button-hover: #5a6268;
+  --card-bg: #1e1e1e;
+  --card-shadow: rgba(0, 0, 0, 0.5);
+  --hover-bg: #2a2a2a;
+  --accent-color: #66b2ff;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  width: 100%;
+  background-color: var(--nav-bg);
+  padding: 12px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  color: var(--nav-text);
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-links li a:hover {
+  background-color: var(--hover-bg);
+  color: var(--accent-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--nav-text);
+  margin-left: 1rem;
+}
+
+/* Button Styling */
+.button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+/* Table Styling */
+table.sortable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 14px;
+  background-color: var(--table-bg);
+  border: 1px solid var(--table-border);
+}
+
+table.sortable th, table.sortable td {
+  border: 1px solid var(--table-border);
+  padding: 10px 14px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+table.sortable th {
+  background-color: var(--table-bg);
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+table.sortable tr:nth-child(even) {
+  background-color: var(--hover-bg);
+}
+
+/* Cards / Graph Container */
+.graph-container {
+  background-color: var(--card-bg);
+  box-shadow: 0 0 10px var(--card-shadow);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+/* Error messages */
+.error {
+  color: #dc3545;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Utility */
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}

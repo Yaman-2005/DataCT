@@ -1,0 +1,6 @@
+ stacked_df = stacked_df[
+                ~((stacked_df['PLAYER'] == delete_player) & (stacked_df['Event'] == delete_event))
+            ]
+
+            # Save updated stack to session
+            session['stats_data'] = stacked_df.to_json()

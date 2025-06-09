@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valorant Player Comparison</title>
+    <script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="{{ url_for('home') }}" class="nav-logo">Valorant Stats</a>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('stats') }}">Stats</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+<br>
+<div class="container">
+    <h1>Welcome to Valorant Stats!</h1>
+
+    <div class="button-section">
+        <a class="button" href="{{ url_for('stats') }}">Event Stats</a>
+    </div>
+
+    <hr>
+
+    <section>
+        <h2>🔥 Top 5 Players - Stage 1 (2025)</h2>
+        <table class="table">
+            <tr>
+                <th>Player</th>
+                <th>Team</th>
+                <th>Rating</th>
+                <th>ACS</th>
+                <th>ADR</th>
+            </tr>
+            {% for row in top5 %}
+            <tr>
+                <td>{{ row['player'] }}</td>
+                <td>{{ row['team'] }}</td>
+                <td>{{ row['rating'] }}</td>
+                <td>{{ row['acs'] }}</td>
+                <td>{{ row['adr'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>🎯 Random Player Highlight</h2>
+        {% if random_player %}
+            <p><strong>{{ random_player['player'] }}</strong> ({{ random_player['team'] }}) at {{ random_player['event']}}</p>
+            <ul>
+                <li>Rating: {{ random_player['rating'] }}</li>
+                <li>ACS: {{ random_player['acs'] }}</li>
+                <li>ADR: {{ random_player['adr'] }}</li>
+                <li>FKPR: {{ random_player['fkpr'] }}</li>
+                <li>FDPR: {{ random_player['fdpr'] }}</li>
+            </ul>
+        {% else %}
+            <p>No player with rating > 1.0 found.</p>
+        {% endif %}
+    </section>
+</div>
+<script>
+         const currentTheme = localStorage.getItem('theme') ||
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  // Apply the stored theme
+  if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('themeIcon').textContent = '☀️';
+  }
+
+  // Theme toggle button functionality
+  document.getElementById('themeToggle').addEventListener('click', function() {
+    let theme = 'light';
+    let icon = '🌙';
+
+    if (!document.documentElement.getAttribute('data-theme') ||
+        document.documentElement.getAttribute('data-theme') === 'light') {
+      theme = 'dark';
+      icon = '☀️';
+    }
+
+    document.documentElement.setAttribute('data-theme', theme);
+    document.getElementById('themeIcon').textContent = icon;
+    localStorage.setItem('theme', theme);
+  });
+    </script>
+</body>
+</html>
