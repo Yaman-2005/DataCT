@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Player Stats</title>
+    <title>DataCT Stats Viewer</title>
     <script>
         (function () {
             try {
@@ -18,7 +18,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="{{ url_for('home') }}" class="nav-logo">Valorant Stats</a>
+            <a href="{{ url_for('home') }}" class="nav-logo">DataCT</a>
             <ul class="nav-links">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('stats') }}">Stats</a></li>
@@ -124,7 +124,7 @@
             const options = {
                 "2023": ["lockin", "stage1", "tokyo", "champs"],
                 "2024": ["kickoff", "stage1", "madrid", "stage2", "champs"],
-                "2025": ["kickoff", "stage1", "bangkok"]
+                "2025": ["kickoff", "stage1", "bangkok","toronto"]
             };
 
             eventSelect.innerHTML = "";
